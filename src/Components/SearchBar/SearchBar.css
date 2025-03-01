@@ -1,0 +1,10 @@
+input{
+    width: 100%;
+    border: 2px solid pink;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid pink;
+}
+input:focus{
+    outline: 2px solid orange;
+}

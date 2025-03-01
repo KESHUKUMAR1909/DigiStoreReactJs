@@ -1,0 +1,12 @@
+.home-page{
+    margin-top:8% ;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.loader-position{
+    position: absolute;    
+    top: 40%;
+}
