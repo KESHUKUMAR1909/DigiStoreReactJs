@@ -1,19 +1,26 @@
-import { BrowserRouter } from 'react-router-dom'
-import './App.css'
-import SearchBar from './Components/SearchBar/SearchBar'
-import Navbar from './Components/Navbar/Navbar'
-import ProductCard from './Components/ProductCard/ProductCard'
-import logo from "./assets/logo.png";
-import HomePage from './Pages/HomePage/HomePage'
+import { BrowserRouter } from 'react-router-dom';
+import { useState } from 'react';
+import './App.css';
+import Navbar from './Components/Navbar/Navbar';
+import productContext from './config/productDetails';
+import isLoginContext from './config/isLogin';
+import HomePage from './Pages/HomePage/HomePage';
+import CustomRoutes from './Routes/customRoutes';
 
 function App() {
+  const [productDetails, setProductDetails] = useState([]);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <BrowserRouter>
-      <Navbar/>  
-      <HomePage />
+      <productContext.Provider value={{ productDetails, setProductDetails }}>
+        <isLoginContext.Provider value={{ isLogin, setIsLogin }}>
+          <Navbar />
+          <CustomRoutes />
+        </isLoginContext.Provider>
+      </productContext.Provider>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

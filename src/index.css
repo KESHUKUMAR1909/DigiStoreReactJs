@@ -1,6 +1,37 @@
 *{
     padding: 0;
     margin: 0;
+    .hind-mysuru-light {
+        font-family: "Hind Mysuru", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+      }
+      
+      .hind-mysuru-regular {
+        font-family: "Hind Mysuru", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      
+      .hind-mysuru-medium {
+        font-family: "Hind Mysuru", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+      }
+      
+      .hind-mysuru-semibold {
+        font-family: "Hind Mysuru", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+      }
+      
+      .hind-mysuru-bold {
+        font-family: "Hind Mysuru", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+      box-sizing: border-box;
+      
 }
 body{
     background-color: rgba(213, 203, 205, 0.548);
