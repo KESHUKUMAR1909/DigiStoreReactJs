@@ -1,7 +1,7 @@
 import "./SearchBar.css"
-function SearchBar(){
+function SearchBar({type , placeholder ,onChange}){
     return(
-        <input type="text" placeholder="Enter Your Search Here" />
+        <input type={type} placeholder={placeholder} onChange={onChange} />
     )
 }
 export default SearchBar; 

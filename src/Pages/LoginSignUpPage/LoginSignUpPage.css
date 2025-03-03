@@ -1,0 +1,36 @@
+.login-signupPage{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: 2px solid rgb(220, 112, 130);
+    padding: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin: auto;
+    margin-top: 10%;
+    border-radius: 20px;
+    gap:  20px;
+    align-items: center;
+    justify-content: center;
+    background: rgb(240, 249, 243);
+}
+.login-signupPage>* :focus{
+    outline: none;
+}
+.password-section{
+    display: flex;
+    width: 100%;
+}
+.password-section:first-child{
+    width: 100%;
+}
+h1{
+    align-self: center;
+}
+.btns-login-sign-up{
+    width: 100%;
+}
+a{
+    text-decoration: none;
+    color: rgb(197, 20, 52);
+}

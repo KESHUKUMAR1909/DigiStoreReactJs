@@ -4,12 +4,11 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import productContext from './config/productDetails';
 import isLoginContext from './config/isLogin';
-import HomePage from './Pages/HomePage/HomePage';
 import CustomRoutes from './Routes/customRoutes';
 
 function App() {
   const [productDetails, setProductDetails] = useState([]);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <BrowserRouter>
