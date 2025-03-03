@@ -8,13 +8,12 @@ const loginUser = (email, password, setIsLogin) => {
 
     if (users[email] === password) {
         localStorage.setItem("loggedInUser", email); // Store logged-in user
+        localStorage.setItem("isLogin", true); // Persist login state
         setIsLogin(true);
         return true; // Login successful
     }
 
-    alert("Incorrect password! Please try again.");
     return false; // Login failed
 };
 
 export default loginUser;
-    

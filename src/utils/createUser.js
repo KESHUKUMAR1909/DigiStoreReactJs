@@ -2,7 +2,8 @@ const createUser = (email, password, setIsLogin) => {
     // Check if another user is already logged in
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
-        return alert(`User ${loggedInUser} is already logged in. Please log out first.`);
+      alert(`User ${loggedInUser} is already logged in. Please log out first.`);
+      return false;
     }
 
     // Retrieve existing users or initialize an empty object
