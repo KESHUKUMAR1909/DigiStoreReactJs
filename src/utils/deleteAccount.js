@@ -9,6 +9,7 @@ function deleteAccount(email , setIsLogin) {
     delete users[email]; // Remove user
     localStorage.removeItem("profileImage"); // Clear profile image
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("isLogin");
     localStorage.setItem("users", JSON.stringify(users)); 
     setIsLogin(false);// Save updated users object
     alert("User deleted successfully!");
