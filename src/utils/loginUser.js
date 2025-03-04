@@ -3,7 +3,8 @@ const loginUser = (email, password, setIsLogin) => {
 
     if (!users[email]) {
         alert("User not found! Please sign up first.");
-        return false;
+        setIsLogin(false);
+        return ;
     }
 
     if (users[email] === password) {

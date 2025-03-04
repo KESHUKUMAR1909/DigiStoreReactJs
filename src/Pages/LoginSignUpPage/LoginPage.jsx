@@ -1,33 +1,41 @@
 import { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom"; // Added Link import
+import { useNavigate, Link } from "react-router-dom";
 import isLoginContext from "../../config/isLogin";
 import Button from "../../Components/Button/Button";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import "./LoginSignUpPage.css";
 import loginUser from "../../utils/loginUser";
+import UserDetail from "../UserDetailsPage/UserDetail";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isHidden, setIsHidden] = useState(true);
-    const { setIsLogin } = useContext(isLoginContext); // Removed unused isLogin
+    const [error, setError] = useState("");
+    const { isLogin, setIsLogin } = useContext(isLoginContext);  // Destructure isLogin
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        const success = loginUser(email, password, setIsLogin);
+    const handleLogin = async () => {
+        setError("");  // Reset previous errors
+        const success = await loginUser(email, password, setIsLogin);  // Await login
+
         if (success) {
-            navigate("/"); // Redirect to home page
+            navigate("/" , { replace: true });  // Redirect on successful login
         } else {
-            alert("Invalid email or password");
+            setError("Invalid email or password");  // Show error message
         }
     };
 
-    return (
+    return isLogin ? (
+        <UserDetail />
+    ) : (
         <div className="login-signupPage">
             <h1>Login Now</h1>
             <div className="btns-login-sign-up">
                 <Button text="Login" width="50%" padding="10px" borderRadius="40px" bgColor="pink" />
-                <Link to={"/signup"}><Button text="SignUp" width="50%" padding="10px" borderRadius="40px" bgColor="whiteSmoke" /></Link>
+                <Link to="/signup">
+                    <Button text="SignUp" width="50%" padding="10px" borderRadius="40px" bgColor="whiteSmoke" />
+                </Link>
             </div>
 
             <SearchBar 
@@ -54,6 +62,8 @@ function LoginPage() {
                 />
             </div>
 
+            {error && <p style={{ color: "red" }}>{error}</p>}  {/* Show error if any */}
+
             <h3>New User? <Link to="/signup">Signup</Link></h3>
 
             <Button 
@@ -63,6 +73,7 @@ function LoginPage() {
                 onClick={handleLogin} 
                 borderRadius="40px" 
                 bgColor="#b4e6b4" 
+                disabled={!email || !password}  // Disable if inputs are empty
             />
         </div>
     );

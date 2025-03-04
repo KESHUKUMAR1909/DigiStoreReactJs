@@ -1,6 +1,7 @@
 const logoutUser = (setIsLogin) => {
+    localStorage.removeItem("profileImage"); // Clear profile image
     localStorage.removeItem("loggedInUser");
     setIsLogin(false);
-    console.log("User logged out.");
+    
 };
 export default logoutUser;

@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 5px;
-    padding:0px 5px 5px 10px;
+    padding:0px 20px 5px 10px;
     justify-content: center;
     width: 50%;
 }
@@ -38,7 +38,7 @@
 }
 input[type="number"] {
     background-color: orange;
-    width: 30%;
+    width: 40%;
     padding: 2px;
     font-size: 13px;
     border: 2px solid #ccc;
