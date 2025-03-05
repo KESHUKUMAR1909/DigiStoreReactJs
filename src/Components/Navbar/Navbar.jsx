@@ -14,9 +14,17 @@ function Navbar() {
 
     const handleAuth = () => {
         if (isLogin) {
-            navigate("/login"); 
+            navigate("/userDetails")
         } else {
-            navigate("/login");
+            navigate("/login"); // Log in
+        }
+    };
+
+    const handleCartNavigation = () => {
+        if (isLogin) {
+            navigate("/cart");
+        } else {
+            alert("Please log in to access your cart.");
         }
     };
 
@@ -35,18 +43,20 @@ function Navbar() {
                 <Button
                     onClick={handleAuth}
                     bgColor="pink"
-                    text={isLogin ? `(${getUserName()})` : "Login"}
+                    text={isLogin ? `Logout (${getUserName()})` : "Login"}
                     padding="4px"
                     width="150px"
                     height="40px"
                     borderRadius="10px"
                 />
                 <Button
-                    onClick={() => console.log("ButtonClickedCart")}
+                    onClick={handleCartNavigation}
                     bgColor="pink"
-                    text={<>
-                        Cart <GiShoppingCart />
-                    </>}
+                    text={
+                        <>
+                            Cart <GiShoppingCart />
+                        </>
+                    }
                     padding="2px"
                     width="110px"
                     height="40px"

@@ -1,6 +1,7 @@
 .home-page{
     margin-top:8% ;
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;

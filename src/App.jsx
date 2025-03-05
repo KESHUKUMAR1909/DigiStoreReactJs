@@ -1,42 +1,41 @@
 import { BrowserRouter } from 'react-router-dom';
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import productContext from './config/productDetails';
 import isLoginContext from './config/isLogin';
 import Footer from "./Components/Footer/Footer"
 import CustomRoutes from './Routes/customRoutes';
+import quantityContext from './config/quantity';
+import CartContext from './config/CartContext.js';
 
 function App() {
   const [productDetails, setProductDetails] = useState([]);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(() => {
+    return localStorage.getItem("isLogin") === "true"; // Persist login state
+  });
+
+  const [quantity, setQuantity] = useState({});
+  const [cart, setCart] = useState(() => {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  });
+
+  // Store cart in localStorage when it changes
   useEffect(() => {
-    const storedLoginStatus = localStorage.getItem("isLogin");
-    if (storedLoginStatus === "true") {
-      setIsLogin(true);
-    }
-
-    // Clear login state when the user closes or reloads the app
-    const handleUnload = () => {
-      localStorage.removeItem("isLogin");
-      localStorage.removeItem("loggedInUser")
-      setIsLogin(false);
-    };
-
-    window.addEventListener("beforeunload", handleUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleUnload);
-    };
-  }, []);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <BrowserRouter>
       <productContext.Provider value={{ productDetails, setProductDetails }}>
         <isLoginContext.Provider value={{ isLogin, setIsLogin }}>
-          <Navbar />
-          <CustomRoutes />
-          <Footer />
+          <quantityContext.Provider value={{ quantity, setQuantity }}>
+            <CartContext.Provider value={{ cart, setCart }}>  
+              <Navbar />
+              <CustomRoutes />
+              <Footer />
+            </CartContext.Provider>
+          </quantityContext.Provider>
         </isLoginContext.Provider>
       </productContext.Provider>
     </BrowserRouter>
